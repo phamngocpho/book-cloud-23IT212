@@ -47,6 +47,7 @@ async function main() {
   booksRead = readClient.db(DB_NAME).collection("books");
   booksWrite = writeClient.db(DB_NAME).collection("books");
 
+  // Luu session tap trung tren MongoDB Atlas dung MongoStore
   app.use(session({
     secret: requireEnv("SESSION_SECRET"),
     resave: false,
