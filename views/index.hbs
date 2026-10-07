@@ -1,0 +1,31 @@
+<h1>Quản lý Sách</h1>
+<p>Phiên làm việc: {{visits}} lượt trong phiên này. Mã phiên: {{sessionId}}</p>
+{{#if error}}<p class="error">{{error}}</p>{{/if}}
+
+<h2>Thêm sách</h2>
+<form method="post" action="/books">
+    <p>Mã sách (bắt đầu bằng {{prefix}})<br><input name="maSach" required></p>
+    <p>Tên sách<br><input name="tenSach" required></p>
+    <p>Giá gốc (chưa VAT)<br><input name="giaGoc" type="number" min="0" required></p>
+    <button type="submit">Lưu lên cloud</button>
+</form>
+
+<h2>Danh sách</h2>
+<table>
+    <tr>
+        <th>Mã</th>
+        <th>Tên</th>
+        <th>Giá gốc</th>
+        <th>VAT</th>
+        <th>Giá sau thuế</th>
+    </tr>
+    {{#each books}}
+    <tr>
+        <td>{{this.maSach}}</td>
+        <td>{{this.tenSach}}</td>
+        <td>{{this.giaGoc}}</td>
+        <td>{{this.vatPercent}}%</td>
+        <td>{{this.giaSauThue}}</td>
+    </tr>
+    {{/each}}
+</table>
